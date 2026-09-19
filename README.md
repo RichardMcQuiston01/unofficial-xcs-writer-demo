@@ -1,6 +1,8 @@
-# template-repo
+# Unofficial XCS Writer Demo
 
 ## Overview
+
+Single Page Application (SPA) demo page demonstrating the features of of the unofficial-xcs-writer NPM package(@richardmcquiston01/unofficial-xcs-writer). User can choose from set of phrases, select image from a set of SVG images, and then generate a file which can be imported into Lightburn. Demo page will be deployed on Vercel.
 
 ## Getting Started
 
