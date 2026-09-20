@@ -27,6 +27,7 @@ npm run dev       # start the local dev server
 npm run build     # type-check and build for production
 npm run preview   # preview the production build
 npm run lint      # lint with oxlint
+npm test          # run the Vitest suite
 ```
 
 ### Examples

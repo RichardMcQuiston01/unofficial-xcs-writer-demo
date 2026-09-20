@@ -17,3 +17,9 @@
 - Stage 2 selection & preview UI: `PhraseSelector`, `IconSelector`,
   `DesignPreview`, and `DisclaimerBanner` components (not yet wired into
   `App.tsx` — that's Stage 4).
+- Stage 3 `.xcs` document builder: `src/lib/buildXcsDocument.ts` composes a
+  phrase and icon into an xTool Creative Space-ready project (icon cut path
+  on the default layer, engraved phrase as real glyph text on a separate
+  layer), plus a Vitest suite (`npm test`) covering canvas bounds,
+  centering, layer assignment, and round-tripping through
+  `assertXcsFormat`.

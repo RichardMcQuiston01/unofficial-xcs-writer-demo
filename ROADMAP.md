@@ -67,14 +67,13 @@ instead of LightBurn's `.lbrn2`.
 - [x] `DisclaimerBanner` component (unofficial demo, not affiliated with or
       endorsed by xTool / xTool Creative Space).
 
-### Stage 3 — XCS document builder
-- [ ] `src/lib/buildXcsDocument.ts`: given a phrase + icon, build an `.xcs`
-      project via `createXCS(deviceId)`:
+### Stage 3 — XCS document builder ✅
+- [x] `src/lib/buildXcsDocument.ts`: given a phrase + icon, build an `.xcs`
+      project via `new XCSGenerator({ deviceId, canvasWidth, canvasHeight })`:
       - `addPath(...)` for the icon outline, centered on the canvas.
-      - `addText(...)` with `layoutGlyphText`/`layoutCurvedGlyphText` for the
-        engraved phrase.
+      - `addText(...)` with `layoutGlyphText` for the engraved phrase.
       - Choose and document a sensible default target device id.
-- [ ] Unit tests (Vitest) covering canvas bounds, path/text placement, and
+- [x] Unit tests (Vitest) covering canvas bounds, path/text placement, and
       that the output round-trips through `assertXcsFormat`.
 
 ### Stage 4 — Download & app wiring
