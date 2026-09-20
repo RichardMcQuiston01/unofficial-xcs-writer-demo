@@ -95,12 +95,16 @@ instead of LightBurn's `.lbrn2`.
       reference demo.
 
 ### Stage 6 — QA & deployment
-- [ ] `npm run lint`, `npm run build` (type-check + build), and Vitest all
+- [x] `npm run lint`, `npm run build` (type-check + build), and Vitest all
       pass in CI.
-- [ ] Manually import a generated `.xcs` file into xTool Creative Space and
-      confirm the icon cuts and phrase engraves as expected.
-- [ ] Finalize `README.md` (prerequisites, install, usage, examples) and
-      `CHANGELOG.md` for the first release.
+- [ ] **Needs a human**: manually import a generated `.xcs` file into
+      xTool Creative Space and confirm the icon cuts and phrase engraves
+      as expected. Sample `.xcs` files for every preset phrase/icon
+      combination were generated end-to-end through the deployed app and
+      validated against `assertXcsFormat`, but nothing in this
+      environment can open the actual xTool Creative Space application.
+- [x] Finalize `README.md` (prerequisites, install, usage, examples) and
+      `CHANGELOG.md` for the first release (`v1.0.0`).
 - [ ] Merge `dev` → `staging`; run through the full manual QA pass above
       again on staging.
 - [ ] Merge `staging` → `main`; verify the Vercel production deployment.
