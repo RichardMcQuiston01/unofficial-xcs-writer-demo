@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.0.0] - 2026-09-20
+
 ### Added
 
 - `ROADMAP.md` outlining the staged development plan (scaffolding, shared
@@ -32,3 +34,15 @@
   `public/donate.svg`; verified the existing `donate.svg` QR decodes to the
   correct Stripe URL. Confirmed keyboard navigation, focus states, and
   `aria-pressed`/`aria-label` coverage match the reference demo.
+- Stage 6 QA & release: full `npm run lint` / `npm run build` / `npm test`
+  pass on the final `dev` tip. Generated and validated a real `.xcs` file
+  (via the deployed browser flow + `assertXcsFormat`) for every preset
+  phrase/icon combination.
+
+### Known limitations
+
+- Rendering inside the actual xTool Creative Space application has not
+  been verified by an automated agent (no access to that software) —
+  generated `.xcs` files pass the package's own format validator and were
+  spot-checked structurally, but a human should confirm the icon cuts and
+  phrase engraves as expected before relying on this for real hardware.
