@@ -14,3 +14,6 @@
   built-in icon set (`src/data/icons.ts`) with helpers for both the
   on-screen SVG preview and an `XCSGenerator.addPath`-ready SVG path `d`
   string.
+- Stage 2 selection & preview UI: `PhraseSelector`, `IconSelector`,
+  `DesignPreview`, and `DisclaimerBanner` components (not yet wired into
+  `App.tsx` — that's Stage 4).

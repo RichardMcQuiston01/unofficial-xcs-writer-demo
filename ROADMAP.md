@@ -60,11 +60,11 @@ instead of LightBurn's `.lbrn2`.
       - an SVG `points` string for on-screen preview, and
       - an SVG path `d` string (+ bounding box) for `XCSGenerator.addPath`.
 
-### Stage 2 — Selection & preview UI
-- [ ] `PhraseSelector` component (pick a preset phrase).
-- [ ] `IconSelector` component (pick a built-in icon).
-- [ ] `DesignPreview` component (renders the chosen icon + phrase together).
-- [ ] `DisclaimerBanner` component (unofficial demo, not affiliated with or
+### Stage 2 — Selection & preview UI ✅
+- [x] `PhraseSelector` component (pick a preset phrase).
+- [x] `IconSelector` component (pick a built-in icon).
+- [x] `DesignPreview` component (renders the chosen icon + phrase together).
+- [x] `DisclaimerBanner` component (unofficial demo, not affiliated with or
       endorsed by xTool / xTool Creative Space).
 
 ### Stage 3 — XCS document builder
