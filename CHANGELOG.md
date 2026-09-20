@@ -23,3 +23,7 @@
   layer), plus a Vitest suite (`npm test`) covering canvas bounds,
   centering, layer assignment, and round-tripping through
   `assertXcsFormat`.
+- Stage 4 download & app wiring: `src/lib/downloadFile.ts` (binary-safe
+  download helper + `slugify`) and a fully wired `App.tsx` — pick a phrase
+  and icon, preview the combined design, and click **Generate & Download
+  .xcs** to download a real xTool Creative Space project file.
