@@ -2,17 +2,39 @@
 
 ## Overview
 
-Single Page Application (SPA) demo page demonstrating the features of of the unofficial-xcs-writer NPM package(@richardmcquiston01/unofficial-xcs-writer). User can choose from set of phrases, select image from a set of SVG images, and then generate a file which can be imported into Lightburn. Demo page will be deployed on Vercel.
+Single Page Application (SPA) demo page demonstrating the features of the unofficial-xcs-writer NPM package (`@richardmcquiston01/unofficial-xcs-writer`). User can choose from a set of phrases, select an image from a set of SVG images, and then generate an `.xcs` file which can be imported into xTool Creative Space. Demo page will be deployed on Vercel.
+
+This project is not affiliated with, endorsed by, or supported by xTool.
+
+See [ROADMAP.md](./ROADMAP.md) for the staged development plan and branching workflow.
 
 ## Getting Started
 
 ### Prerequisites
 
+- Node.js 20+
+
 ### Installation
+
+```sh
+npm install
+```
 
 ### Usage
 
+```sh
+npm run dev       # start the local dev server
+npm run build     # type-check and build for production
+npm run preview   # preview the production build
+npm run lint      # lint with oxlint
+npm test          # run the Vitest suite
+```
+
 ### Examples
+
+Project scaffolding (Vite + React + TypeScript + Tailwind CSS) is in place.
+The phrase/icon picker and `.xcs` export flow are being built out per
+[ROADMAP.md](./ROADMAP.md).
 
 ## Buy Me a Coffee
 
