@@ -52,9 +52,9 @@ instead of LightBurn's `.lbrn2`.
 - [x] Add `vercel.json` (SPA rewrite to `index.html`, `dist` output dir).
 - [x] Confirm `tsconfig*.json` project references match the Vite template.
 
-### Stage 1 — Shared data & assets
-- [ ] Port the preset phrase list (`src/data/phrases.ts`).
-- [ ] Port the built-in icon set (`src/data/icons.ts`): star, heart, hexagon,
+### Stage 1 — Shared data & assets ✅
+- [x] Port the preset phrase list (`src/data/phrases.ts`).
+- [x] Port the built-in icon set (`src/data/icons.ts`): star, heart, hexagon,
       arrow, lightning bolt, house — each defined once as viewBox-space
       polygon points, with helpers to render:
       - an SVG `points` string for on-screen preview, and
