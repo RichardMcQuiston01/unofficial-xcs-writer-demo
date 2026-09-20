@@ -27,3 +27,8 @@
   download helper + `slugify`) and a fully wired `App.tsx` — pick a phrase
   and icon, preview the combined design, and click **Generate & Download
   .xcs** to download a real xTool Creative Space project file.
+- Stage 5 polish: floating `DonateCard` (dismissible, persists via
+  `localStorage`) wired into `App.tsx` alongside `donate-widget.css` and
+  `public/donate.svg`; verified the existing `donate.svg` QR decodes to the
+  correct Stripe URL. Confirmed keyboard navigation, focus states, and
+  `aria-pressed`/`aria-label` coverage match the reference demo.

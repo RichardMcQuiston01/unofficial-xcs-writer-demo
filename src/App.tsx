@@ -1,12 +1,14 @@
 import { useMemo, useState } from 'react';
 import { DesignPreview } from './components/DesignPreview';
 import { DisclaimerBanner } from './components/DisclaimerBanner';
+import { DonateCard } from './components/DonateCard';
 import { IconSelector } from './components/IconSelector';
 import { PhraseSelector } from './components/PhraseSelector';
 import { ICONS } from './data/icons';
 import { PHRASES } from './data/phrases';
 import { buildXcsDocument } from './lib/buildXcsDocument';
 import { downloadFile, slugify } from './lib/downloadFile';
+import './donate-widget.css';
 
 function App() {
   const [selectedPhrase, setSelectedPhrase] = useState<string>(PHRASES[0]);
@@ -70,6 +72,8 @@ function App() {
       <footer className="pb-8 text-center text-sm text-slate-500">
         &copy;2026 Richard McQuiston. All rights reserved.
       </footer>
+
+      <DonateCard />
     </div>
   );
 }
