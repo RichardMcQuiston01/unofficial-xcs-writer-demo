@@ -76,11 +76,11 @@ instead of LightBurn's `.lbrn2`.
 - [x] Unit tests (Vitest) covering canvas bounds, path/text placement, and
       that the output round-trips through `assertXcsFormat`.
 
-### Stage 4 — Download & app wiring
-- [ ] `src/lib/downloadFile.ts`: binary-safe download helper for the
+### Stage 4 — Download & app wiring ✅
+- [x] `src/lib/downloadFile.ts`: binary-safe download helper for the
       `Uint8Array` produced by `project.toBytes()`, plus a `slugify` helper
       for the filename (`<slug>.xcs`).
-- [ ] `App.tsx`: wire phrase/icon state, preview, and a
+- [x] `App.tsx`: wire phrase/icon state, preview, and a
       "Generate & Download .xcs" button together, mirroring the LightBurn
       demo's layout and copy (swapped to reference xTool Creative Space and
       `@richardmcquiston01/unofficial-xcs-writer`).

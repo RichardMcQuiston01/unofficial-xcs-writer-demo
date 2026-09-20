@@ -32,9 +32,14 @@ npm test          # run the Vitest suite
 
 ### Examples
 
-Project scaffolding (Vite + React + TypeScript + Tailwind CSS) is in place.
-The phrase/icon picker and `.xcs` export flow are being built out per
-[ROADMAP.md](./ROADMAP.md).
+1. Pick one of the preset phrases.
+2. Pick one of the built-in SVG images (star, heart, hexagon, arrow,
+   lightning bolt, house).
+3. Review the combined preview.
+4. Click **Generate & Download .xcs** to download an xTool Creative
+   Space-ready project file with the image cut as a vector path and the
+   phrase engraved as text, built with
+   [`@richardmcquiston01/unofficial-xcs-writer`](https://www.npmjs.com/package/@richardmcquiston01/unofficial-xcs-writer).
 
 ## Buy Me a Coffee
 
