@@ -85,13 +85,13 @@ instead of LightBurn's `.lbrn2`.
       demo's layout and copy (swapped to reference xTool Creative Space and
       `@richardmcquiston01/unofficial-xcs-writer`).
 
-### Stage 5 — Styling, donate block & polish
-- [ ] Match the LightBurn demo's visual polish with Tailwind utility classes.
-- [ ] Reuse the standard "Buy Me a Coffee" donate block (`DonateCard`,
+### Stage 5 — Styling, donate block & polish ✅
+- [x] Match the LightBurn demo's visual polish with Tailwind utility classes.
+- [x] Reuse the standard "Buy Me a Coffee" donate block (`DonateCard`,
       `donate-widget.css`, `donate.svg`, README section) already present in
       this repo.
-- [ ] Footer / copyright, favicon, page title, meta description.
-- [ ] Accessibility pass (labels, `aria-pressed`, focus states) matching the
+- [x] Footer / copyright, favicon, page title, meta description.
+- [x] Accessibility pass (labels, `aria-pressed`, focus states) matching the
       reference demo.
 
 ### Stage 6 — QA & deployment
