@@ -43,14 +43,14 @@ instead of LightBurn's `.lbrn2`.
 
 ## Stages
 
-### Stage 0 — Project scaffolding
-- [ ] Scaffold a Vite + React 19 + TypeScript SPA (`npm create vite@latest`).
-- [ ] Add Tailwind CSS v4 (`@tailwindcss/vite`) and base layout styles.
-- [ ] Add `oxlint` for linting; wire up `dev` / `build` / `preview` / `lint`
+### Stage 0 — Project scaffolding ✅
+- [x] Scaffold a Vite + React 19 + TypeScript SPA (`npm create vite@latest`).
+- [x] Add Tailwind CSS v4 (`@tailwindcss/vite`) and base layout styles.
+- [x] Add `oxlint` for linting; wire up `dev` / `build` / `preview` / `lint`
       npm scripts.
-- [ ] Add `@richardmcquiston01/unofficial-xcs-writer` as a dependency.
-- [ ] Add `vercel.json` (SPA rewrite to `index.html`, `dist` output dir).
-- [ ] Confirm `tsconfig*.json` project references match the Vite template.
+- [x] Add `@richardmcquiston01/unofficial-xcs-writer` as a dependency.
+- [x] Add `vercel.json` (SPA rewrite to `index.html`, `dist` output dir).
+- [x] Confirm `tsconfig*.json` project references match the Vite template.
 
 ### Stage 1 — Shared data & assets
 - [ ] Port the preset phrase list (`src/data/phrases.ts`).

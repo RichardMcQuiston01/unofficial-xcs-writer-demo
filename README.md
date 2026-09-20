@@ -12,11 +12,28 @@ See [ROADMAP.md](./ROADMAP.md) for the staged development plan and branching wor
 
 ### Prerequisites
 
+- Node.js 20+
+
 ### Installation
+
+```sh
+npm install
+```
 
 ### Usage
 
+```sh
+npm run dev       # start the local dev server
+npm run build     # type-check and build for production
+npm run preview   # preview the production build
+npm run lint      # lint with oxlint
+```
+
 ### Examples
+
+Project scaffolding (Vite + React + TypeScript + Tailwind CSS) is in place.
+The phrase/icon picker and `.xcs` export flow are being built out per
+[ROADMAP.md](./ROADMAP.md).
 
 ## Buy Me a Coffee
 
