@@ -111,6 +111,9 @@ instead of LightBurn's `.lbrn2`.
       Stage 7/8 code. Stage 8's Cut/Engrave profile patch (see Stage 8
       below) has been verified against the real xTool Creative Space
       application.
+- [x] Merged `dev` → `staging` → `main` again for Stage 9; verified the
+      production deployment is live on the Stage 9 code (real
+      xTool-writer Cut/Engrave API instead of Stage 8's demo-side patch).
 
 ### Stage 7 — Adopt the `.xs` (v2) format ✅
 xTool Studio v1.7+ saves new projects as `.xs` (a ZIP archive of several
