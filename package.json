@@ -1,7 +1,7 @@
 {
   "name": "unofficial-xcs-writer-demo",
   "private": true,
-  "version": "0.1.0",
+  "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,7 +11,8 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@richardmcquiston01/unofficial-xcs-writer": "^0.4.1",
+    "@richardmcquiston01/unofficial-xcs-writer": "^0.6.0",
+    "fflate": "^0.8.3",
     "react": "^19.2.8",
     "react-dom": "^19.2.8"
   },
