@@ -6,7 +6,7 @@ import { IconSelector } from './components/IconSelector';
 import { PhraseSelector } from './components/PhraseSelector';
 import { ICONS } from './data/icons';
 import { PHRASES } from './data/phrases';
-import { buildXcsDocument } from './lib/buildXcsDocument';
+import { buildXsDocument } from './lib/buildXsDocument';
 import { downloadFile, slugify } from './lib/downloadFile';
 import './donate-widget.css';
 
@@ -20,8 +20,8 @@ function App() {
   );
 
   function handleGenerate(): void {
-    const xcsBytes = buildXcsDocument({ phrase: selectedPhrase, icon: selectedIcon });
-    downloadFile(`${slugify(selectedPhrase)}.xcs`, xcsBytes, 'application/json');
+    const xsBytes = buildXsDocument({ phrase: selectedPhrase, icon: selectedIcon });
+    downloadFile(`${slugify(selectedPhrase)}.xs`, xsBytes, 'application/zip');
   }
 
   return (
@@ -35,7 +35,7 @@ function App() {
 
         <p className="text-center text-slate-600">
           Pick a phrase and an image, then export an xTool Creative Space-ready{' '}
-          <code className="rounded bg-slate-200 px-1 py-0.5">.xcs</code> file — built with{' '}
+          <code className="rounded bg-slate-200 px-1 py-0.5">.xs</code> file — built with{' '}
           <a
             href="https://www.npmjs.com/package/@richardmcquiston01/unofficial-xcs-writer"
             target="_blank"
@@ -65,7 +65,7 @@ function App() {
           onClick={handleGenerate}
           className="self-center rounded-lg bg-indigo-600 px-6 py-3 text-base font-semibold text-white shadow transition-colors hover:bg-indigo-700"
         >
-          Generate &amp; Download .xcs
+          Generate &amp; Download .xs
         </button>
       </div>
 

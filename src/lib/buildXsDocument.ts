@@ -18,9 +18,9 @@ export interface DesignOptions {
  * re-target a project to a different device after import.
  *
  * `CANVAS_SIZE_MM` is the working area this module lays shapes out
- * against; as of unofficial-xcs-writer 0.4.1, `XCSGeneratorOptions.canvas*`
- * isn't written into the `.xcs` file itself (the app derives the visible
- * bed size from the device id), so this is purely our own layout budget.
+ * against; `XCSGeneratorOptions.canvas*` isn't written into the `.xs` file
+ * itself (the app derives the visible bed size from the device id), so
+ * this is purely our own layout budget.
  */
 const DEVICE_ID = 'P2S';
 export const CANVAS_SIZE_MM = 300;
@@ -36,13 +36,18 @@ const CUT_LAYER_COLOR = '#00befe';
 const ENGRAVE_LAYER_COLOR = '#ed1c24';
 
 /**
- * Composes a phrase and an icon into an xTool Creative Space-ready `.xcs`
+ * Composes a phrase and an icon into an xTool Creative Space-ready `.xs`
  * project using the unofficial-xcs-writer package: the icon is placed on
  * the default "Cyan" cut layer and the phrase is engraved as real glyph
- * text on a separate "Engrave Text" layer, so each can get its own
- * power/speed settings once opened in xTool Creative Space.
+ * text on a separate "Engrave Text" layer.
+ *
+ * As of unofficial-xcs-writer 0.6.0, `.xs` generation doesn't yet write
+ * Cut/Engrave process profiles or device bindings (no `addProfile`-style
+ * API exists there yet) — the two layers above group the shapes visually
+ * and are ready for that once it lands, but power/speed/mode still need
+ * to be set once per shape inside xTool Creative Space after import.
  */
-export function buildXcsDocument(options: DesignOptions): Uint8Array {
+export function buildXsDocument(options: DesignOptions): Uint8Array {
   const { phrase, icon, fontFamily = DEFAULT_FONT_FAMILY } = options;
   const project = new XCSGenerator({
     deviceId: DEVICE_ID,
@@ -71,5 +76,5 @@ export function buildXcsDocument(options: DesignOptions): Uint8Array {
     });
   }
 
-  return project.toBytes();
+  return project.toXsBytes();
 }
