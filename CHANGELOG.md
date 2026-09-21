@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-09-21
+
 ### Changed
 
 - Stage 7: switched the demo's generated output from the legacy `.xcs`
