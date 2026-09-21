@@ -105,9 +105,34 @@ instead of LightBurn's `.lbrn2`.
       environment can open the actual xTool Creative Space application.
 - [x] Finalize `README.md` (prerequisites, install, usage, examples) and
       `CHANGELOG.md` for the first release (`v1.0.0`).
-- [ ] Merge `dev` → `staging`; run through the full manual QA pass above
+- [x] Merge `dev` → `staging`; run through the full manual QA pass above
       again on staging.
 - [ ] Merge `staging` → `main`; verify the Vercel production deployment.
+      Held pending Stage 7 (below) so `main` ships with working
+      Cut/Engrave assignment rather than the known v1-format limitation.
+
+### Stage 7 — Adopt the `.xs` (v2) format
+xTool Studio v1.7+ saves new projects as `.xs` (a ZIP archive of several
+JSON files), not the older single-JSON `.xcs`. `.xcs` still opens but no
+longer carries real Cut/Engrave process bindings once re-saved, which is
+what Stage 6 QA ran into. `@richardmcquiston01/unofficial-xcs-writer`
+v0.5.0 added `.xs` reading/token-substitution (`assertXsFormat`,
+`extractXsTokens`, `renderXsFile`) but **not** building a new `.xs`
+project from scratch (an open issue in that package).
+
+- [x] Bump the `@richardmcquiston01/unofficial-xcs-writer` dependency to
+      `^0.5.0`; confirmed it's a drop-in upgrade (`createXCS`/`.toBytes()`
+      unchanged, new `.xs` exports resolve).
+- [ ] Decide the `.xs` output approach with the package maintainer:
+      template + `renderXsFile` substitution (one real `.xs` template per
+      icon, phrase swapped in via a `{{Phrase}}` token) vs. waiting for
+      `unofficial-xcs-writer` to support building `.xs` from scratch.
+- [ ] Implement whichever approach is chosen; update `buildXcsDocument.ts`
+      (or a new `buildXsDocument.ts`), `downloadFile.ts`'s extension/MIME
+      type, and `App.tsx`'s button copy accordingly.
+- [ ] Re-run the full Stage 6 QA pass (generate + validate every
+      phrase/icon combination) against the new output.
+- [ ] Update README/CHANGELOG to drop the v1-format known-limitation note.
 
 ## Stretch goals (post-1.0)
 
