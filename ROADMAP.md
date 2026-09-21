@@ -108,10 +108,9 @@ instead of LightBurn's `.lbrn2`.
 - [x] Merge `dev` → `staging`; run through the full manual QA pass above
       again on staging.
 - [ ] Merge `staging` → `main`; verify the Vercel production deployment.
-      Held pending Cut/Engrave profile/binding support landing upstream in
-      `@richardmcquiston01/unofficial-xcs-writer` (Stage 7 adopted the
-      `.xs` format itself, but manual Cut/Engrave assignment is still
-      needed after import — see Stage 7 below).
+      Held pending real-app verification of Stage 8's Cut/Engrave profile
+      patch (see Stage 8 below) — nothing in this environment can open
+      xTool Creative Space itself.
 
 ### Stage 7 — Adopt the `.xs` (v2) format ✅
 xTool Studio v1.7+ saves new projects as `.xs` (a ZIP archive of several
@@ -140,9 +139,44 @@ project from scratch (`XCSGenerator.toXsBytes()`).
 **Still open**: v0.6.0's `.xs` generation doesn't yet write Cut/Engrave
 process profiles or device bindings (no `addProfile`-style API exists in
 the package yet) — power/speed/mode still need to be set manually per
-shape in xTool Creative Space after import. The package maintainer is
-working on the next release to address this; the known-limitation note in
-`CHANGELOG.md` stays until that lands and this demo is updated to use it.
+shape in xTool Creative Space after import. See Stage 8 below for how this
+demo now works around that itself.
+
+### Stage 8 — Patch in default Cut/Engrave profiles ✅
+Real-world testing (importing a Stage 7 `.xs` file via "Open Project")
+found that Cut/Engrave wasn't just unset — it couldn't be manually assigned
+either. Comparing against a real xTool-authored `.xs` file showed why: its
+`profiles.json` holds real profile objects and the device file's
+`processing[canvasId].modes.LASER_PLANE.bindings[]` maps display ids to
+them; a v0.6.0-generated file's `profiles.json` is `{ profiles: {} }` with
+no bindings, so xTool Creative Space has nothing to offer in its
+Cut/Engrave dropdown at all. (Confirmed indirectly too: importing the same
+file into an *existing* project — which already has its own real profiles
+— picks up a default "Engrave" assignment and can be reassigned, because
+that project's profile library isn't empty.)
+
+- [x] `src/lib/xsProfiles.ts`: `injectDefaultProfiles(xsBytes, file)`
+      unzips a generated `.xs` archive (via `fflate`) and patches in a
+      default Cut profile (`VECTOR_CUTTING`) bound to every PATH display
+      and a default Engrave profile (`VECTOR_ENGRAVING`) bound to every
+      TEXT display, matching the schema of a real xTool Creative Space
+      project file. Power/speed values are conservative placeholders, not
+      tuned to any material.
+- [x] `buildXsDocument.ts`: switched from `XCSGenerator.toXsBytes()` to
+      `project.generate()` + `buildXsArchive()` (both public exports) so
+      the same `XCSFile` object can be reused to build both the archive
+      and the profile/binding patch — the display/canvas/device ids have
+      to match between them.
+- [x] Promoted `fflate` from a dev-only (test) dependency to a real one,
+      since profile injection now runs in the browser bundle too.
+- [x] Extended the Vitest suite to assert the icon binds to a Cut profile
+      and the phrase to an Engrave profile (and that a blank phrase only
+      binds the Cut profile).
+- [ ] **Needs a human**: re-import a generated `.xs` file via "Open
+      Project" and confirm the icon now shows as Cut and the phrase as
+      Engrave (and that both can still be freely reassigned).
+- [ ] Once the package's own profile/binding API lands, revisit whether to
+      drop this patch in favor of it.
 
 ## Stretch goals (post-1.0)
 

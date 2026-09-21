@@ -12,13 +12,27 @@
   **Generate & Download** button now produces a `<slug>.xs` file instead of
   `<slug>.xcs`. Layout, centering, and layer-assignment logic is unchanged.
 
+- Stage 8: `.xs` files now carry real Cut/Engrave profiles and device
+  bindings. Real-world testing found that a Stage 7 file couldn't just be
+  pre-set to Cut/Engrave — it couldn't be manually assigned either, since
+  `unofficial-xcs-writer` 0.6.0 writes an empty `profiles.json` and empty
+  device bindings, leaving xTool Creative Space with nothing to offer in
+  its dropdown. `src/lib/xsProfiles.ts` now patches a generated archive
+  after the fact with a default Cut profile bound to the icon and a
+  default Engrave profile bound to the phrase, matching the schema of a
+  real xTool-authored `.xs` file. `fflate` moved from a dev-only
+  dependency to a real one since this patch step runs in the browser.
+
 ### Known limitations
 
-- v0.6.0's `.xs` generation doesn't yet write Cut/Engrave process profiles
-  or device bindings (no `addProfile`-style API exists in the package
-  yet), so power/speed/mode still need to be set manually per shape in
-  xTool Creative Space after import. This note will be removed once that
-  support lands upstream and this demo adopts it.
+- The Cut/Engrave profiles Stage 8 injects use conservative placeholder
+  power/speed values, not settings tuned to any material — they exist so
+  the profiles are assignable and editable in xTool Creative Space, not as
+  ready-to-cut settings.
+- This is a demo-side workaround for a gap in
+  `@richardmcquiston01/unofficial-xcs-writer` 0.6.0 (no `addProfile`-style
+  API yet); once the package adds real profile/binding support, this patch
+  step should be revisited in favor of it.
 
 ## [1.0.0] - 2026-09-20
 
