@@ -97,20 +97,18 @@ instead of LightBurn's `.lbrn2`.
 ### Stage 6 — QA & deployment
 - [x] `npm run lint`, `npm run build` (type-check + build), and Vitest all
       pass in CI.
-- [ ] **Needs a human**: manually import a generated `.xcs` file into
+- [x] **Needs a human**: manually import a generated project file into
       xTool Creative Space and confirm the icon cuts and phrase engraves
-      as expected. Sample `.xcs` files for every preset phrase/icon
-      combination were generated end-to-end through the deployed app and
-      validated against `assertXcsFormat`, but nothing in this
-      environment can open the actual xTool Creative Space application.
+      as expected. Superseded by the `.xs`-format verification in Stage 8
+      below, since this demo no longer generates the legacy `.xcs` format.
 - [x] Finalize `README.md` (prerequisites, install, usage, examples) and
       `CHANGELOG.md` for the first release (`v1.0.0`).
 - [x] Merge `dev` → `staging`; run through the full manual QA pass above
       again on staging.
-- [ ] Merge `staging` → `main`; verify the Vercel production deployment.
-      Held pending real-app verification of Stage 8's Cut/Engrave profile
-      patch (see Stage 8 below) — nothing in this environment can open
-      xTool Creative Space itself.
+- [ ] Merge `dev` → `staging` again (Stage 7 and 8), then `staging` → `main`;
+      verify the Vercel production deployment. Stage 8's Cut/Engrave
+      profile patch (see Stage 8 below) has been verified against the real
+      xTool Creative Space application.
 
 ### Stage 7 — Adopt the `.xs` (v2) format ✅
 xTool Studio v1.7+ saves new projects as `.xs` (a ZIP archive of several
@@ -172,9 +170,11 @@ that project's profile library isn't empty.)
 - [x] Extended the Vitest suite to assert the icon binds to a Cut profile
       and the phrase to an Engrave profile (and that a blank phrase only
       binds the Cut profile).
-- [ ] **Needs a human**: re-import a generated `.xs` file via "Open
-      Project" and confirm the icon now shows as Cut and the phrase as
-      Engrave (and that both can still be freely reassigned).
+- [x] **Verified by a human**: re-imported a generated `.xs` file via
+      "Open Project" — it opened in a new tab with the correct target
+      device (P2S) already selected, and the icon/text group came in set
+      to Engrave (freely reassignable), confirming the injected profiles
+      and bindings work as intended.
 - [ ] Once the package's own profile/binding API lands, revisit whether to
       drop this patch in favor of it.
 
