@@ -105,10 +105,12 @@ instead of LightBurn's `.lbrn2`.
       `CHANGELOG.md` for the first release (`v1.0.0`).
 - [x] Merge `dev` → `staging`; run through the full manual QA pass above
       again on staging.
-- [ ] Merge `dev` → `staging` again (Stage 7 and 8), then `staging` → `main`;
-      verify the Vercel production deployment. Stage 8's Cut/Engrave
-      profile patch (see Stage 8 below) has been verified against the real
-      xTool Creative Space application.
+- [x] Merge `dev` → `staging` again (Stage 7 and 8), then `staging` → `main`;
+      verified the Vercel production deployment
+      (https://unofficial-xcs-writer-demo.vercel.app/) is live on the
+      Stage 7/8 code. Stage 8's Cut/Engrave profile patch (see Stage 8
+      below) has been verified against the real xTool Creative Space
+      application.
 
 ### Stage 7 — Adopt the `.xs` (v2) format ✅
 xTool Studio v1.7+ saves new projects as `.xs` (a ZIP archive of several
