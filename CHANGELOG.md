@@ -22,6 +22,10 @@
   default Engrave profile bound to the phrase, matching the schema of a
   real xTool-authored `.xs` file. `fflate` moved from a dev-only
   dependency to a real one since this patch step runs in the browser.
+  Verified against the real xTool Creative Space application via "Open
+  Project": the file opens with the correct target device selected and
+  the icon/text already assigned a Cut/Engrave profile (freely
+  reassignable), resolving the known limitation from Stage 6/7.
 
 ### Known limitations
 
