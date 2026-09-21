@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.2.0] - 2026-09-21
+
 ### Changed
 
 - Stage 9: replaced Stage 8's `xsProfiles.ts` post-processing patch with
