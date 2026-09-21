@@ -1,11 +1,13 @@
 import {
   XCSGenerator,
+  buildXsArchive,
   fontSizePoints,
   layoutGlyphText,
   loadDefaultFont,
   translateGlyphLayout,
 } from '@richardmcquiston01/unofficial-xcs-writer';
 import { iconToXcsPath, type IconDefinition } from '../data/icons';
+import { injectDefaultProfiles } from './xsProfiles';
 
 export interface DesignOptions {
   readonly phrase: string;
@@ -43,9 +45,10 @@ const ENGRAVE_LAYER_COLOR = '#ed1c24';
  *
  * As of unofficial-xcs-writer 0.6.0, `.xs` generation doesn't yet write
  * Cut/Engrave process profiles or device bindings (no `addProfile`-style
- * API exists there yet) — the two layers above group the shapes visually
- * and are ready for that once it lands, but power/speed/mode still need
- * to be set once per shape inside xTool Creative Space after import.
+ * API exists there yet), so this module patches them in itself via
+ * `injectDefaultProfiles` — see `xsProfiles.ts` for why that's needed and
+ * what it writes. Once the package adds a real profile/binding API, this
+ * patch step can be dropped in favor of it.
  */
 export function buildXsDocument(options: DesignOptions): Uint8Array {
   const { phrase, icon, fontFamily = DEFAULT_FONT_FAMILY } = options;
@@ -76,5 +79,6 @@ export function buildXsDocument(options: DesignOptions): Uint8Array {
     });
   }
 
-  return project.toXsBytes();
+  const file = project.generate();
+  return injectDefaultProfiles(buildXsArchive(file), file);
 }
