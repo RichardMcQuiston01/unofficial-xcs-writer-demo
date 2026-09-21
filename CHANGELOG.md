@@ -15,6 +15,8 @@
   `deviceCode: "ZY013"` for the P2S instead of a placeholder. Output
   schema and Vitest coverage are unchanged — only who generates the
   profiles/bindings changed, from this demo to the package itself.
+  Verified in xTool Studio via both "Open Project" and importing into an
+  existing project.
 
 ### Known limitations
 

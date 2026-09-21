@@ -208,10 +208,10 @@ instead of reusing the raw id string as a placeholder.
 - [x] Smoke-tested the real output: `devices/device-P2S.json` now carries
       the real `deviceCode: "ZY013"` (previously the `"P2S"` placeholder),
       and `profiles.json`/bindings match Stage 8's verified structure.
-- [ ] **Needs a human**: re-import a generated `.xs` file via "Open
-      Project" to confirm it behaves identically to the Stage 8 patch
-      (sanity check that switching who writes the profiles/bindings didn't
-      change anything xTool Creative Space cares about).
+- [x] **Verified by a human**: tested in xTool Studio via both "Open
+      Project" and importing into an existing project — both worked,
+      confirming the switch to the upstream API behaves identically to
+      the Stage 8 patch.
 
 ## Stretch goals (post-1.0)
 
