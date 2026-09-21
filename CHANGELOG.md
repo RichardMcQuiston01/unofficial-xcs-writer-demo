@@ -2,6 +2,15 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Bumped `@richardmcquiston01/unofficial-xcs-writer` to `^0.5.0`, which adds
+  `.xs` (xTool Studio v1.7+'s current ZIP-based project format) reading,
+  token extraction, and variable substitution. Building a new `.xs`
+  project from scratch isn't supported by the package yet, so this demo
+  still generates the older `.xcs` format for now — see `ROADMAP.md`
+  Stage 7 for the plan to adopt `.xs` output.
+
 ## [1.0.0] - 2026-09-20
 
 ### Added
