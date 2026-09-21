@@ -108,31 +108,41 @@ instead of LightBurn's `.lbrn2`.
 - [x] Merge `dev` → `staging`; run through the full manual QA pass above
       again on staging.
 - [ ] Merge `staging` → `main`; verify the Vercel production deployment.
-      Held pending Stage 7 (below) so `main` ships with working
-      Cut/Engrave assignment rather than the known v1-format limitation.
+      Held pending Cut/Engrave profile/binding support landing upstream in
+      `@richardmcquiston01/unofficial-xcs-writer` (Stage 7 adopted the
+      `.xs` format itself, but manual Cut/Engrave assignment is still
+      needed after import — see Stage 7 below).
 
-### Stage 7 — Adopt the `.xs` (v2) format
+### Stage 7 — Adopt the `.xs` (v2) format ✅
 xTool Studio v1.7+ saves new projects as `.xs` (a ZIP archive of several
 JSON files), not the older single-JSON `.xcs`. `.xcs` still opens but no
 longer carries real Cut/Engrave process bindings once re-saved, which is
 what Stage 6 QA ran into. `@richardmcquiston01/unofficial-xcs-writer`
 v0.5.0 added `.xs` reading/token-substitution (`assertXsFormat`,
-`extractXsTokens`, `renderXsFile`) but **not** building a new `.xs`
-project from scratch (an open issue in that package).
+`extractXsTokens`, `renderXsFile`); v0.6.0 added building a new `.xs`
+project from scratch (`XCSGenerator.toXsBytes()`).
 
 - [x] Bump the `@richardmcquiston01/unofficial-xcs-writer` dependency to
       `^0.5.0`; confirmed it's a drop-in upgrade (`createXCS`/`.toBytes()`
       unchanged, new `.xs` exports resolve).
-- [ ] Decide the `.xs` output approach with the package maintainer:
-      template + `renderXsFile` substitution (one real `.xs` template per
-      icon, phrase swapped in via a `{{Phrase}}` token) vs. waiting for
-      `unofficial-xcs-writer` to support building `.xs` from scratch.
-- [ ] Implement whichever approach is chosen; update `buildXcsDocument.ts`
-      (or a new `buildXsDocument.ts`), `downloadFile.ts`'s extension/MIME
-      type, and `App.tsx`'s button copy accordingly.
-- [ ] Re-run the full Stage 6 QA pass (generate + validate every
-      phrase/icon combination) against the new output.
-- [ ] Update README/CHANGELOG to drop the v1-format known-limitation note.
+- [x] Bump to `^0.6.0` and adopt `XCSGenerator.toXsBytes()` — a drop-in
+      swap for `.toBytes()` — instead of the template/`renderXsFile`
+      substitution approach, once the package added from-scratch `.xs`
+      building.
+- [x] Renamed `buildXcsDocument.ts` → `buildXsDocument.ts`; updated
+      `downloadFile.ts`'s call site to a `.xs` filename and
+      `application/zip` MIME type, and `App.tsx`'s copy/button text.
+- [x] Re-ran the full Stage 6 QA pass (generate + validate every
+      phrase/icon combination) against the new `.xs` output.
+- [ ] Update README/CHANGELOG to drop the v1-format known-limitation note
+      once Cut/Engrave profile/binding support lands upstream (see below).
+
+**Still open**: v0.6.0's `.xs` generation doesn't yet write Cut/Engrave
+process profiles or device bindings (no `addProfile`-style API exists in
+the package yet) — power/speed/mode still need to be set manually per
+shape in xTool Creative Space after import. The package maintainer is
+working on the next release to address this; the known-limitation note in
+`CHANGELOG.md` stays until that lands and this demo is updated to use it.
 
 ## Stretch goals (post-1.0)
 

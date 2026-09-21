@@ -4,12 +4,21 @@
 
 ### Changed
 
-- Bumped `@richardmcquiston01/unofficial-xcs-writer` to `^0.5.0`, which adds
-  `.xs` (xTool Studio v1.7+'s current ZIP-based project format) reading,
-  token extraction, and variable substitution. Building a new `.xs`
-  project from scratch isn't supported by the package yet, so this demo
-  still generates the older `.xcs` format for now — see `ROADMAP.md`
-  Stage 7 for the plan to adopt `.xs` output.
+- Stage 7: switched the demo's generated output from the legacy `.xcs`
+  format to `.xs` (xTool Studio v1.7+'s current ZIP-based project format).
+  Bumped `@richardmcquiston01/unofficial-xcs-writer` to `^0.6.0`, which adds
+  building an `.xs` project from scratch (`XCSGenerator.toXsBytes()`).
+  `src/lib/buildXcsDocument.ts` is now `src/lib/buildXsDocument.ts`; the
+  **Generate & Download** button now produces a `<slug>.xs` file instead of
+  `<slug>.xcs`. Layout, centering, and layer-assignment logic is unchanged.
+
+### Known limitations
+
+- v0.6.0's `.xs` generation doesn't yet write Cut/Engrave process profiles
+  or device bindings (no `addProfile`-style API exists in the package
+  yet), so power/speed/mode still need to be set manually per shape in
+  xTool Creative Space after import. This note will be removed once that
+  support lands upstream and this demo adopts it.
 
 ## [1.0.0] - 2026-09-20
 

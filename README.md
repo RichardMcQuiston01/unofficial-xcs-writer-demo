@@ -2,7 +2,7 @@
 
 ## Overview
 
-Single Page Application (SPA) demo page demonstrating the features of the unofficial-xcs-writer NPM package (`@richardmcquiston01/unofficial-xcs-writer`). User can choose from a set of phrases, select an image from a set of SVG images, and then generate an `.xcs` file which can be imported into xTool Creative Space. Demo page will be deployed on Vercel.
+Single Page Application (SPA) demo page demonstrating the features of the unofficial-xcs-writer NPM package (`@richardmcquiston01/unofficial-xcs-writer`). User can choose from a set of phrases, select an image from a set of SVG images, and then generate an `.xs` file which can be imported into xTool Creative Space. Demo page will be deployed on Vercel.
 
 This project is not affiliated with, endorsed by, or supported by xTool.
 
@@ -36,7 +36,7 @@ npm test          # run the Vitest suite
 2. Pick one of the built-in SVG images (star, heart, hexagon, arrow,
    lightning bolt, house).
 3. Review the combined preview.
-4. Click **Generate & Download .xcs** to download an xTool Creative
+4. Click **Generate & Download .xs** to download an xTool Creative
    Space-ready project file with the image cut as a vector path and the
    phrase engraved as text, built with
    [`@richardmcquiston01/unofficial-xcs-writer`](https://www.npmjs.com/package/@richardmcquiston01/unofficial-xcs-writer).
