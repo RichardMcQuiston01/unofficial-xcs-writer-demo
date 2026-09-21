@@ -177,8 +177,41 @@ that project's profile library isn't empty.)
       device (P2S) already selected, and the icon/text group came in set
       to Engrave (freely reassignable), confirming the injected profiles
       and bindings work as intended.
-- [ ] Once the package's own profile/binding API lands, revisit whether to
-      drop this patch in favor of it.
+- [x] Once the package's own profile/binding API lands, revisit whether to
+      drop this patch in favor of it. See Stage 9 below — done in
+      `@richardmcquiston01/unofficial-xcs-writer` 0.7.0.
+
+### Stage 9 — Adopt the upstream Cut/Engrave processing API ✅
+`@richardmcquiston01/unofficial-xcs-writer` 0.7.0 added real `.xs`
+processing-profile support: `.addText()`/`.addPath()`/`.addBitmap()` now
+accept a `processing: { processingType, values }` option, and
+`.toXsBytes()` turns it into a real `profiles.json` entry plus a matching
+`LASER_PLANE`-mode device binding — exactly what Stage 8's
+`xsProfiles.ts` was working around. 0.8.0 additionally added a
+`XTOOL_MACHINES` catalog so a known `deviceId` (e.g. `"P2S"`, already
+this demo's default) resolves its real `extId`/`extName`/`deviceCode`
+instead of reusing the raw id string as a placeholder.
+
+- [x] Bumped the `@richardmcquiston01/unofficial-xcs-writer` dependency to
+      `^0.8.1`.
+- [x] `buildXsDocument.ts`: dropped `xsProfiles.ts`'s manual unzip/patch
+      step; `addPath`/`addText` now pass `processing: CUT_PROCESSING` /
+      `processing: ENGRAVE_PROCESSING` directly, and the function is back
+      to a single `project.toXsBytes()` call. Deleted `src/lib/xsProfiles.ts`.
+      Same placeholder power/speed values as Stage 8, just supplied via the
+      real API instead of post-processing the archive.
+- [x] Moved `fflate` back to a dev-only (test) dependency, since this demo
+      no longer manipulates the `.xs` ZIP itself at runtime.
+- [x] Confirmed the existing Vitest suite (profile/binding assertions
+      included) passes unchanged against the upstream-generated output —
+      the archive schema is identical, only who writes it changed.
+- [x] Smoke-tested the real output: `devices/device-P2S.json` now carries
+      the real `deviceCode: "ZY013"` (previously the `"P2S"` placeholder),
+      and `profiles.json`/bindings match Stage 8's verified structure.
+- [ ] **Needs a human**: re-import a generated `.xs` file via "Open
+      Project" to confirm it behaves identically to the Stage 8 patch
+      (sanity check that switching who writes the profiles/bindings didn't
+      change anything xTool Creative Space cares about).
 
 ## Stretch goals (post-1.0)
 

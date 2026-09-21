@@ -2,6 +2,26 @@
 
 ## [Unreleased]
 
+### Changed
+
+- Stage 9: replaced Stage 8's `xsProfiles.ts` post-processing patch with
+  `@richardmcquiston01/unofficial-xcs-writer` 0.7.0's real Cut/Engrave
+  processing API. Bumped the dependency to `^0.8.1`; `addPath`/`addText`
+  now pass a `processing: { processingType, values }` option directly, and
+  `buildXsDocument.ts` is back to a single `project.toXsBytes()` call — no
+  more manual unzip/re-zip. Deleted `src/lib/xsProfiles.ts` and moved
+  `fflate` back to a dev-only dependency. 0.8.0's new machine catalog also
+  means the generated `.xs` file's device now carries the real
+  `deviceCode: "ZY013"` for the P2S instead of a placeholder. Output
+  schema and Vitest coverage are unchanged — only who generates the
+  profiles/bindings changed, from this demo to the package itself.
+
+### Known limitations
+
+- Same placeholder power/speed values as Stage 8 — not tuned to any
+  material, just enough to make the profiles assignable and editable in
+  xTool Creative Space.
+
 ## [1.1.0] - 2026-09-21
 
 ### Changed
