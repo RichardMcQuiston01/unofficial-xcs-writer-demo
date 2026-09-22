@@ -2,6 +2,14 @@
 
 ## [Unreleased]
 
+### Added
+
+- Stage 10: custom phrase input. `PhraseSelector` now has a labeled text
+  field (32-character cap) alongside the preset buttons — typing in it
+  sets the phrase directly, and clicking a preset fills the field with it.
+  `buildXsDocument.ts` and `downloadFile.ts` needed no changes, since both
+  already handled arbitrary phrase strings.
+
 ## [1.2.0] - 2026-09-21
 
 ### Changed
@@ -17,6 +25,8 @@
   `deviceCode: "ZY013"` for the P2S instead of a placeholder. Output
   schema and Vitest coverage are unchanged — only who generates the
   profiles/bindings changed, from this demo to the package itself.
+  Verified in xTool Studio via both "Open Project" and importing into an
+  existing project.
 
 ### Known limitations
 

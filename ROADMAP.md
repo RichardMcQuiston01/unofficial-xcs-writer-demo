@@ -211,14 +211,32 @@ instead of reusing the raw id string as a placeholder.
 - [x] Smoke-tested the real output: `devices/device-P2S.json` now carries
       the real `deviceCode: "ZY013"` (previously the `"P2S"` placeholder),
       and `profiles.json`/bindings match Stage 8's verified structure.
-- [ ] **Needs a human**: re-import a generated `.xs` file via "Open
-      Project" to confirm it behaves identically to the Stage 8 patch
-      (sanity check that switching who writes the profiles/bindings didn't
-      change anything xTool Creative Space cares about).
+- [x] **Verified by a human**: tested in xTool Studio via both "Open
+      Project" and importing into an existing project — both worked,
+      confirming the switch to the upstream API behaves identically to
+      the Stage 8 patch.
+
+### Stage 10 — Custom phrase input ✅
+`PhraseSelector` now has a text field alongside the preset buttons, so a
+phrase doesn't have to be one of the eight presets. It's a single
+controlled value shared with the preset buttons: typing in the field
+updates the phrase directly (deselecting any preset), and clicking a
+preset fills the field with it (still editable from there).
+
+- [x] Added a labeled `<input>` to `PhraseSelector.tsx`, capped at 32
+      characters — the longest length `buildXsDocument.ts`'s layout budget
+      (`TEXT_EM_SIZE_MM`/`TEXT_TOP_MM`) reliably keeps centered on the
+      300mm canvas without the text running off the edge.
+- [x] No changes needed in `buildXsDocument.ts`/`downloadFile.ts` — both
+      already handled arbitrary phrase strings (blank-phrase handling,
+      `slugify`'s fallback to `"design"` for a non-alphanumeric result).
+- [x] Verified in a real browser (Playwright): typing a custom phrase
+      updates the live preview and downloads a correctly slugified `.xs`
+      file; clicking a preset still fills the field and marks that button
+      pressed.
 
 ## Stretch goals (post-1.0)
 
-- [ ] Custom phrase input (free text) in addition to presets.
 - [ ] Custom SVG/image upload in addition to built-in icons.
 - [ ] Multiple xTool device targets with device-specific defaults.
 - [ ] Font family selection for the engraved text.
