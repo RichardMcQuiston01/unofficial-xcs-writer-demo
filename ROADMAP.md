@@ -114,6 +114,8 @@ instead of LightBurn's `.lbrn2`.
 - [x] Merged `dev` → `staging` → `main` again for Stage 9; verified the
       production deployment is live on the Stage 9 code (real
       xTool-writer Cut/Engrave API instead of Stage 8's demo-side patch).
+- [x] Merged `dev` → `staging` → `main` again for Stage 10; verified the
+      production deployment is live with the custom phrase input.
 
 ### Stage 7 — Adopt the `.xs` (v2) format ✅
 xTool Studio v1.7+ saves new projects as `.xs` (a ZIP archive of several

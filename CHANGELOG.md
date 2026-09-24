@@ -2,6 +2,8 @@
 
 ## [Unreleased]
 
+## [1.3.0] - 2026-09-24
+
 ### Added
 
 - Stage 10: custom phrase input. `PhraseSelector` now has a labeled text
