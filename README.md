@@ -32,7 +32,7 @@ npm test          # run the Vitest suite
 
 ### Examples
 
-1. Pick one of the preset phrases.
+1. Pick one of the preset phrases, or type your own.
 2. Pick one of the built-in SVG images (star, heart, hexagon, arrow,
    lightning bolt, house).
 3. Review the combined preview.
