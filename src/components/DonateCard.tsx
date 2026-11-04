@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 
 const STORAGE_KEY = 'donate-card-dismissed';
-const DEFAULT_DONATE_URL = 'https://www.paypal.com/ncp/payment/5BZBYEQ5AB4K6';
+const DEFAULT_DONATE_URL = 'https://ko-fi.com/P1V529Z7ZP';
 const DEFAULT_QR_SRC = '/donate.png';
 
 export interface DonateCardProps {
@@ -67,7 +67,7 @@ export function DonateCard({
       <div className="donate-card__qr">
         <img
           src={qrSrc}
-          alt="QR code linking to the PayPal donation page"
+          alt="QR code linking to the Ko-fi donation page"
           width={180}
           height={180}
         />
@@ -78,9 +78,9 @@ export function DonateCard({
         href={donateUrl}
         target="_blank"
         rel="noopener noreferrer"
-        aria-label="Donate via PayPal, opens in a new tab"
+        aria-label="Support on Ko-fi, opens in a new tab"
       >
-        Donate via PayPal <span aria-hidden="true">&rarr;</span>
+        Support on Ko-fi <span aria-hidden="true">&rarr;</span>
       </a>
     </aside>
   );
